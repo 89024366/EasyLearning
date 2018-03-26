@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:inputType="text"
+      android:paddingLeft="20dp"
+      android:singleLine="true"
+      android:textColor="@android:color/black"
+      android:background="@drawable/border"
+      android:hint="Search"
+     />
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="500dp"
+      >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="hello" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="world" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="long" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="may" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="the" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="sunshine" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="engine" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="mod" />
+
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:text="rationale" />
+
+    </LinearLayout>
+
+  </ScrollView>
+</LinearLayout>
