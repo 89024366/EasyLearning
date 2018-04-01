@@ -22,5 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        app:itemIconTint="@drawable/navigation_select"
+        app:itemTextColor="@drawable/navigation_select"
+        />
 </LinearLayout>
