@@ -12,9 +12,19 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center">
-        <TextView android:layout_width="300dp"
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:id="@+id/tv"/>
+            android:paddingLeft="0dp"
+            android:padding="@dimen/activity_vertical_margin" />
+        <TextView
+            android:id="@+id/tv_zh"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:gravity="left"
+            android:padding="@dimen/activity_vertical_margin" />
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"

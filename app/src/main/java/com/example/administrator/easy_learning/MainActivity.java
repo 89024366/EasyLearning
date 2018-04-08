@@ -1,6 +1,7 @@
 package com.example.administrator.easy_learning;
 
 import android.app.FragmentTransaction;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private Detail f_detail;
     private Notebook f_notebook;
     private Search f_search;
-    private DbHelper databaseHelper;
+    private DBOpenHelper databaseHelper;
+    private SQLiteDatabase database;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -46,13 +48,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        databaseHelper = new DBOpenHelper(this);
+        database=databaseHelper.getSqLiteDatabase();
         init();
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        databaseHelper = new DbHelper(this);
+
     }
 
+    public SQLiteDatabase getDatabase(){
+        return database;
+    }
     private void init(){
         f_detail=new Detail();
         f_notebook=new Notebook();

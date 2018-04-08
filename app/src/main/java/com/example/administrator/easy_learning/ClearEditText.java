@@ -3,6 +3,8 @@ package com.example.administrator.easy_learning;
 /**
  * Created by Administrator on 2018/3/28.
  */
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +20,8 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
     private final static String TAG = "EditTextWithDel";
     private Drawable imgInable;
     private Context mContext;
+    private Cursor cursor=null;
+    private SQLiteDatabase database=null;
 
     public  ClearEditText(Context context) {
         super(context);
@@ -37,9 +41,22 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
         mContext = context;
         init();
     }
+    public void setdatabase(SQLiteDatabase db){
+        database=db;
+    }
+
+    public Cursor getCursor(){
+        if(database!=null) {
+            String input = "ab";
+            cursor = database.rawQuery("SELECT * FROM words where word='" + input + "%'", null);
+        }
+        return cursor;
+    }
+
 
     private void init() {
         imgInable = mContext.getResources().getDrawable(R.drawable.delete);
+        cursor=null;
         addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -52,13 +69,17 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
             @Override
             public void afterTextChanged(Editable s) {
                 setDrawable();
-            }
+                /*if(database!=null) {
+                    String input = "ab";
+                    cursor = database.rawQuery("SELECT * FROM words where word='" + input + "%'", null);
+                }*/
+                }
         });
         setDrawable();
     }
 
     // 设置删除图片
-    private void setDrawable() {
+    public void setDrawable() {
         if (length() < 1)
             setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         else
