@@ -39,12 +39,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/tv_eng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="translation"
 
-                    android:textSize="30dp"/>
+                    android:text="translation"
+                    android:textSize="30dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,13 +67,15 @@
                 />
 
         </RelativeLayout>
+
         <TextView
+            android:id="@+id/tv_meaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n.翻译 ; 译文"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="20dp"
-            android:textSize="14dp"/>
+            android:text="n.翻译 ; 译文"
+            android:textSize="14dp" />
     </LinearLayout>
 
 
@@ -102,76 +106,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="1. "/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry"/>
+                <TextView
+                    android:id="@+id/tv_lx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginBottom="20dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="1. "/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginBottom="20dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="1. "/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginBottom="20dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="1. "/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginBottom="20dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="1. "/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry"/>
-            </LinearLayout>
 
         </LinearLayout>
 

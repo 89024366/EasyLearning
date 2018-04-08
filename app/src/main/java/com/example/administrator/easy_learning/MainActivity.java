@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private word m_word;
     private TextView mTextMessage;
     private Detail f_detail;
     private Notebook f_notebook;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        m_word=new word();
         //translator online
         TRANSLATOR = new TranslateOnline(this);
     }
@@ -106,4 +107,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void seteng(String str) {
+        f_detail.seteng(str);
+        //m_word.setWords(str);
+    }
+
+    public void setzh(String str) {
+        f_detail.setzh(str);
+    }
+
+    public void setlx(String str){
+
+        f_detail.setlx(str);
+    }
+
+
 }

@@ -52,22 +52,6 @@ public class Search extends Fragment {
                 new int[]{R.id.tv});
         listView.setAdapter(simpleAdapter);
         handler = new Handler();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-                editText.clearFocus();
-                String input = editText.getText().toString();
-                Cursor cursor = database.rawQuery("SELECT * FROM words where word = '" + input + "'", null);
-                Detail  detail = new Detail();
-                Bundle bundle = new Bundle();
-                bundle.putString("key_eng",input);
-                if(cursor != null&&cursor.getCount()>0){
-                }
-                detail.setArgument(bundle);
-                ((MainActivity)getActivity()).selectFragment(R.id.navigation_dashboard);
-
-            }
-        });
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -130,10 +114,36 @@ public class Search extends Fragment {
                     }
                 }
             }
+
         });
 
 
+     /*   listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // TODO Auto-generated method stub
+                HashMap<String, String> map = (HashMap<String, String>) parent
+                        .getItemAtPosition(position);
+                Toast.makeText(view.getContext(), map.get("shopName"),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });*/
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                editText.clearFocus();
+                HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
+                String eng = map.get("eng");
+                String zh = map.get("zh");
+                String lx = map.get("lx");
+                //Cursor cursor = database.rawQuery("SELECT * FROM words where word = '" + eng + "'", null);
+                ((MainActivity)getActivity()).seteng(eng);
+                    ((MainActivity)getActivity()).setzh(zh);
+                    ((MainActivity)getActivity()).setlx(lx);
+                ((MainActivity)getActivity()).selectFragment(R.id.navigation_dashboard);
 
+            }
+        });
 
         return view;
     }
@@ -154,6 +164,7 @@ public class Search extends Fragment {
                 Map<String, Object> map=new HashMap<String, Object>();
                 map.put("eng",cursor.getString(cursor.getColumnIndex("Word")));
                 map.put("zh",cursor.getString(cursor.getColumnIndex("meaning")));
+                map.put("lx",cursor.getString(cursor.getColumnIndex("lx")));
                 list.add(map);
             }
         }
