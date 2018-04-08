@@ -79,7 +79,7 @@ public class Search extends Fragment {
                             listView.setAdapter(simpleAdapter);
                         }else{
                             final ListView lv = listView;
-                            final List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+                            final List<Map<String, Object>> listOfWords=new ArrayList<Map<String,Object>>();
                             MainActivity.TRANSLATOR.lookUpFromEn(input, new TranslateListener() {
                                 @Override
                                 public void onError(TranslateErrorCode translateErrorCode, String s) {
@@ -91,6 +91,23 @@ public class Search extends Fragment {
                                     handler.post(new Runnable() {
                                         @Override
                                         public void run() {
+                                            List<String> l = translate.getExplains();
+                                            if(l != null && l.size() > 0){
+                                                StringBuilder stringBuilder = new StringBuilder();
+                                                for(String word:l){
+                                                    stringBuilder.append(word);
+                                                }
+                                                Map<String, Object> map=new HashMap<String, Object>();
+                                                map.put("eng",input);
+                                                map.put("zh",stringBuilder.toString());
+                                                map.put("lx",null);
+                                                listOfWords.add(map);
+                                                SimpleAdapter sa = new SimpleAdapter(getActivity(), listOfWords,
+                                                        R.layout.list_item,
+                                                        new String[]{"eng","zh"},
+                                                        new int[]{R.id.tv,R.id.tv_zh});
+                                                lv.setAdapter(sa);
+                                            }/*
                                             Map<String, Object> map=new HashMap<String, Object>();
                                             map.put("eng",input);
                                             map.put("zh",translate.getExplains().toString());
@@ -99,7 +116,7 @@ public class Search extends Fragment {
                                                     R.layout.list_item,
                                                     new String[]{"eng","zh"},
                                                     new int[]{R.id.tv,R.id.tv_zh});
-                                            lv.setAdapter(sa);
+                                            lv.setAdapter(sa);*/
                                         }
                                     });
                                 }
@@ -134,10 +151,16 @@ public class Search extends Fragment {
                 editText.clearFocus();
                 HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
                 String eng = map.get("eng");
-                String zh = map.get("zh");
-                String lx = map.get("lx").replace("/r/n","\n");
+                String zh = map.get("zh").replace("；","\n");
+                String lx=map.get("lx");
+                if(lx==null){
+                    lx="没有例句";
+                }
+                else{
+                    lx =lx.replace("/r/n","\n");
+                }
                 //Cursor cursor = database.rawQuery("SELECT * FROM words where word = '" + eng + "'", null);
-                
+
                 ((MainActivity)getActivity()).seteng(eng);
                     ((MainActivity)getActivity()).setzh(zh);
                     ((MainActivity)getActivity()).setlx(lx);

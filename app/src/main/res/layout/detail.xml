@@ -44,9 +44,9 @@
                     android:id="@+id/tv_eng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textColor="#000000"
                     android:text="translation"
-                    android:textSize="30dp" />
+                    android:textSize="50dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginTop="20dp"
             android:text="n.翻译 ; 译文"
-            android:textSize="14dp" />
+            android:textSize="16dp" />
     </LinearLayout>
 
 
@@ -105,12 +105,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="1. "/>
+                    android:text=" "/>
 
                 <TextView
                     android:id="@+id/tv_lx"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18dp"
                     android:text="He always wanted to get into translation, so he think it's kind embrassing that he acturally get into computer industry" />
             </LinearLayout>
 
