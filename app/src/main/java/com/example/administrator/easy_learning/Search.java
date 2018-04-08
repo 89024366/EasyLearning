@@ -135,7 +135,7 @@ public class Search extends Fragment {
                 HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
                 String eng = map.get("eng");
                 String zh = map.get("zh");
-                String lx = map.get("lx");
+                String lx = map.get("lx").replace("/r/n","\n");
                 //Cursor cursor = database.rawQuery("SELECT * FROM words where word = '" + eng + "'", null);
                 ((MainActivity)getActivity()).seteng(eng);
                     ((MainActivity)getActivity()).setzh(zh);
