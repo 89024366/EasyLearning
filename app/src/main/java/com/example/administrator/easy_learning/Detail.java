@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.administrator.easy_learning.R;
 
 public class Detail extends Fragment{
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.detail,container,false);
         return view;

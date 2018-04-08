@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private Search f_search;
     private DBOpenHelper databaseHelper;
     private SQLiteDatabase database;
+    private BottomNavigationView navigation;
+    public static TranslateOnline TRANSLATOR;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -52,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         database=databaseHelper.getSqLiteDatabase();
         init();
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        //translator online
+        TRANSLATOR = new TranslateOnline(this);
     }
 
     public SQLiteDatabase getDatabase(){
@@ -73,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         beginTransaction.addToBackStack(null);//返回到上一个显示的fragment
         beginTransaction.commit();//每一个事务最后操作必须是commit（），否则看不见效果
         showNav(R.id.navigation_home);
+    }
+    public void selectFragment(int navid){
+        navigation.setSelectedItemId(R.id.navigation_dashboard);
     }
 
     private void showNav(int navid){

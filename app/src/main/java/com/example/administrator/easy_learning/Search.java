@@ -3,11 +3,14 @@ package com.example.administrator.easy_learning;
 /**
  * Created by Administrator on 2018/3/26.
  */
+import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +21,11 @@ import android.widget.AdapterView;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import com.youdao.sdk.ydtranslate.Translate;
+import com.youdao.sdk.ydtranslate.TranslateErrorCode;
+import com.youdao.sdk.ydtranslate.TranslateListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +38,7 @@ public class Search extends Fragment {
     private List<Map<String, Object>> wordslist;
     private SimpleAdapter simpleAdapter;
     private SQLiteDatabase database;
+    private Handler handler;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.search,container,false);
@@ -42,19 +51,21 @@ public class Search extends Fragment {
                 new String[]{"eng"},
                 new int[]{R.id.tv});
         listView.setAdapter(simpleAdapter);
-
+        handler = new Handler();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-/*
+                editText.clearFocus();
+                String input = editText.getText().toString();
+                Cursor cursor = database.rawQuery("SELECT * FROM words where word = '" + input + "'", null);
+                Detail  detail = new Detail();
                 Bundle bundle = new Bundle();
-                bundle.putInt("photo", photo[arg2]);
-                bundle.putString("message", message[arg2]);
-                Intent intent = new Intent();
-                intent.putExtras(bundle);
-                intent.setClass(MainActivity.this, MoveList.class);
-                Log.i("message", message[arg2]);
-                startActivity(intent);*/
+                bundle.putString("key_eng",input);
+                if(cursor != null&&cursor.getCount()>0){
+                }
+                detail.setArgument(bundle);
+                ((MainActivity)getActivity()).selectFragment(R.id.navigation_dashboard);
+
             }
         });
         editText.addTextChangedListener(new TextWatcher() {
@@ -72,15 +83,50 @@ public class Search extends Fragment {
             public void afterTextChanged(Editable s) {
                 editText.setDrawable();
                 if(database!=null) {
-                    String input = editText.getText().toString();
+                    final String input = editText.getText().toString();
                     Cursor cursor = database.rawQuery("SELECT * FROM words where word LIKE '" + input + "%'", null);
                     if (!input.equals("")) {
                         wordslist = getData(cursor);
-                        simpleAdapter = new SimpleAdapter(getActivity(), wordslist,
-                                R.layout.list_item,
-                                new String[]{"eng","zh"},
-                                new int[]{R.id.tv,R.id.tv_zh});
-                        listView.setAdapter(simpleAdapter);
+                        if(cursor != null&&cursor.getCount()>0){
+                            simpleAdapter = new SimpleAdapter(getActivity(), wordslist,
+                                    R.layout.list_item,
+                                    new String[]{"eng","zh"},
+                                    new int[]{R.id.tv,R.id.tv_zh});
+                            listView.setAdapter(simpleAdapter);
+                        }else{
+                            final ListView lv = listView;
+                            final List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+                            MainActivity.TRANSLATOR.lookUpFromEn(input, new TranslateListener() {
+                                @Override
+                                public void onError(TranslateErrorCode translateErrorCode, String s) {
+
+                                }
+
+                                @Override
+                                public void onResult(final Translate translate, String s, String s1) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Map<String, Object> map=new HashMap<String, Object>();
+                                            map.put("eng",input);
+                                            map.put("zh",translate.getExplains().toString());
+                                            list.add(map);
+                                            SimpleAdapter sa = new SimpleAdapter(getActivity(), list,
+                                                    R.layout.list_item,
+                                                    new String[]{"eng","zh"},
+                                                    new int[]{R.id.tv,R.id.tv_zh});
+                                            lv.setAdapter(sa);
+                                        }
+                                    });
+                                }
+
+                                @Override
+                                public void onResult(List<Translate> list, List<String> list1, List<TranslateErrorCode> list2, String s) {
+
+                                }
+                            });
+                        }
+
                     }
                 }
             }
@@ -111,7 +157,7 @@ public class Search extends Fragment {
                 list.add(map);
             }
         }
-        else{
+        else {
 
         }
         return list;
