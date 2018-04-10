@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="20dp"
+    android:descendantFocusability="blocksDescendants">
+    <TextView
+        android:id="@+id/ls_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="word"
+        android:textColor="#000000"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/ls_translation"
+        android:layout_width="wrap_content"
+        android:text="translation"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorTranslation"/>
+</RelativeLayout>

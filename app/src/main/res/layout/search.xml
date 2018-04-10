@@ -14,9 +14,8 @@
 
         <com.example.administrator.easy_learning.ClearEditText
             android:id="@+id/s_edit"
-            android:layout_width="300dp"
+            android:layout_width="330dp"
             android:layout_height="40dp"
-            android:layout_marginRight="40dp"
             android:background="#ffffff"
             android:hint="Search"
             android:inputType="text"

@@ -14,20 +14,52 @@
         android:paddingBottom="20dp"
         android:background="@drawable/shadow"
         >
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/border"
-            android:paddingLeft="25dp">
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            >
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/arrow_left"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:text="translation"
-                android:layout_gravity="center_vertical"
+                android:id="@+id/tv_head"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="11dp"
+                android:paddingLeft="20dp"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
                 android:textColor="#aaaaaa"/>
-        </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_vertical"
+                android:background="#00ffffff"
+                android:paddingLeft="25dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:background="#000000"
+                android:layout_centerHorizontal="true"
+                />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,36 +67,37 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_eng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:text="translation"
-                    android:textSize="50dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="[traff]"
-
-                    android:textSize="12dp"
-                    android:paddingLeft="3dp"/>
             </LinearLayout>
             <Button
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:id="@+id/btn_add"
                 android:padding="2dp"
-                android:text="+"
                 android:textColor="#999999"
                 android:layout_marginTop="8dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/borderdark"
+                android:background="@drawable/add"
                 />
+
+            <TextView
+                android:id="@+id/tv_eng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="translation"
+                android:textColor="#000000"
+                android:textSize="50dp" />
 
         </RelativeLayout>
 
@@ -72,10 +105,13 @@
             android:id="@+id/tv_meaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
             android:text="n.翻译 ; 译文"
             android:textSize="16dp" />
+
+    </RelativeLayout>
+
     </LinearLayout>
 
 
@@ -89,6 +125,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
@@ -98,9 +135,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

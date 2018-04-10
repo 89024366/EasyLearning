@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
+                    f_notebook.refresh();
                     showNav(R.id.navigation_notifications);
                     return true;
             }
@@ -80,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
         showNav(R.id.navigation_home);
     }
     public void selectFragment(int navid){
-        navigation.setSelectedItemId(R.id.navigation_dashboard);
+        navigation.setSelectedItemId(navid);
     }
+
 
     private void showNav(int navid){
         FragmentTransaction beginTransaction=getFragmentManager().beginTransaction();
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 beginTransaction.commit();
                 break;
             case R.id.navigation_dashboard:
+                //beginTransaction.setCustomAnimations(R.animator.right_in,0);
+                //beginTransaction.add(R.id.content,f_detail);
                 beginTransaction.hide(f_search).hide(f_notebook).show(f_detail);
                 //beginTransaction.replace(R.id.content,f_detail);
                 beginTransaction.addToBackStack(null);
@@ -110,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void seteng(String str) {
         f_detail.seteng(str);
-        //m_word.setWords(str);
     }
 
     public void setzh(String str) {
@@ -123,4 +126,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void sethd(String str) {
+        f_detail.sethead(str);
+    }
+
+    public void inNotebook(Boolean in){
+        if(in){
+            f_detail.inNotebook();
+        }else {
+            f_detail.notInNotebook();
+        }
+    }
 }

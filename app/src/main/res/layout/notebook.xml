@@ -27,44 +27,16 @@
             android:textColor="#000000"
             android:textSize="22dp"/>
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         >
-        <LinearLayout
+        <ListView
+            android:id="@+id/list_notebook"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/radius"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp">
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="20dp">
-                <TextView
-                    android:id="@+id/word_word"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="translation"
-                    android:textColor="#000000"/>
 
-                <ImageButton
-                    android:id="@+id/word_translation"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/trash"
-                    android:textColor="@color/colorTranslation"/>
-            </RelativeLayout>
-        </LinearLayout>
+        </ListView>
 
-
-    </ScrollView>
 </LinearLayout>
